@@ -3,6 +3,7 @@
  * http://webpack.github.io/docs/configuration.html
  */
 var path = require('path');
+var webpack = require('webpack');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 
@@ -21,6 +22,13 @@ module.exports = {
 
   // Loaders
   module: {
+    preLoaders: [
+      {
+        test: /\.(js|jsx)$/,
+        exclude: /node_modules/,
+        loader: 'eslint'
+      }
+    ],
     loaders: [
       {
         test: /\.(js|jsx)$/,
@@ -36,7 +44,7 @@ module.exports = {
       },
       {
         test: /\.(gif|png|jpg|svg|eot|woff2|ttf|woff)(\?|$)/,
-        loader: 'url?limit=8192'
+        loader: 'file'
       }
     ]
   },
@@ -44,6 +52,9 @@ module.exports = {
   // Plugins
   plugins: [
     new ExtractTextPlugin('main.css'),
+    new webpack.optimize.UglifyJsPlugin({
+      compress: { warnings: false }
+    }),
     new HtmlWebpackPlugin({
       template: 'src/index.html',
       filename: '../index.html',

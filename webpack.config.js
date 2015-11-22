@@ -4,6 +4,8 @@
  */
 var path = require('path');
 var webpack = require('webpack');
+var HtmlWebpackPlugin = require('html-webpack-plugin');
+
 
 var AUTOPREFIXER_BROWSERS = ['last 2 version'];
 
@@ -17,7 +19,8 @@ module.exports = {
 
   output: {
     path: '/',
-    filename: 'app.js'
+    filename: 'app.js',
+    pathinfo: true
   },
 
   // Loaders
@@ -44,7 +47,7 @@ module.exports = {
       },
       {
         test: /\.(gif|png|jpg|svg|eot|woff2|ttf|woff)(\?|$)/,
-        loader: 'url?limit=8192'
+        loader: 'file'
       }
     ]
   },
@@ -72,10 +75,15 @@ module.exports = {
   // Plugins
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin()
+    new webpack.NoErrorsPlugin(),
+    new HtmlWebpackPlugin({
+      template: 'src/index.html',
+      inject: true,
+      hash: true
+    })
   ],
 
   // General configuration
   debug: true,
-  devtool: 'eval'
+  devtool: 'eval-cheap-module-source-map'
 };
