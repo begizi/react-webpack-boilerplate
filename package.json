@@ -4,8 +4,9 @@
   "description": "A simple react, webpack, gulp, stylus, and hot reloading boilerplate",
   "main": "src/index.js",
   "scripts": {
-    "start": "./node_modules/.bin/webpack-dev-server",
-    "test": "NODE_PATH=./node_modules:./src ./node_modules/.bin/jest .test.js"
+    "start": "webpack-dev-server --config webpack.config.js",
+    "build": "NODE_ENV=production webpack -p --config webpack.dist.config.js",
+    "test": "NODE_PATH=./node_modules:./src jest .test.js"
   },
   "author": "",
   "license": "MIT",
@@ -20,6 +21,7 @@
     "babel-preset-stage-0": "^6.1.18",
     "css-loader": "^0.23.0",
     "eslint": "^1.9.0",
+    "eslint-loader": "^1.1.1",
     "eslint-plugin-react": "^3.8.0",
     "extract-text-webpack-plugin": "^0.9.1",
     "file-loader": "^0.8.4",
