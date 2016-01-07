@@ -4,7 +4,7 @@
   "description": "A simple react, webpack, stylus, and hot reloading boilerplate",
   "scripts": {
     "start": "webpack-dev-server --config webpack.config.js",
-    "build": "NODE_ENV=production webpack -p --config webpack.dist.config.js",
+    "build": "NODE_ENV=production webpack -p --progress --stats --display-error-details --config webpack.dist.config.js",
     "test": "NODE_PATH=./node_modules:./src jest .test.js"
   },
   "author": "",
