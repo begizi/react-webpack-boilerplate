@@ -2,7 +2,6 @@
   "name": "react-webpack-boilerplate",
   "version": "0.0.1",
   "description": "A simple react, webpack, stylus, and hot reloading boilerplate",
-  "main": "src/index.js",
   "scripts": {
     "start": "webpack-dev-server --config webpack.config.js",
     "build": "NODE_ENV=production webpack -p --config webpack.dist.config.js",
